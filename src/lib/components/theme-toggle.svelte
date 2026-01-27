@@ -40,6 +40,21 @@
   }
 </script>
 
+<svelte:head>
+  <script>
+    (() => {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.colorScheme = 'dark';
+      } else {
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+</svelte:head>
+
 <button
   type="button"
   class="relative inline-flex h-9 w-9 items-center justify-center rounded-md font-medium text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
