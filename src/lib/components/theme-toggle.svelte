@@ -2,33 +2,43 @@
   import { Moon, Sun } from "@lucide/svelte";
   import { onMount } from "svelte";
 
-  let darkMode: boolean = false;
+  let darkMode = $state(false);
 
   onMount(() => {
+    // Initialize based on current document state (set by blocking script in app.html)
     darkMode = document.documentElement.classList.contains('dark');
+
+    // Listen for system preference changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    function handleSystemThemeChange(e: MediaQueryListEvent) {
+      // Only follow system changes if user hasn't set an explicit preference
+      if (!localStorage.getItem('theme')) {
+        darkMode = e.matches;
+        applyTheme(darkMode ? 'dark' : 'light');
+      }
+    }
+
+    mediaQuery.addEventListener('change', handleSystemThemeChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleSystemThemeChange);
+    };
   });
 
   function toggleTheme() {
     darkMode = !darkMode;
-    setTheme(darkMode ? 'dark' : 'light');
+    const theme = darkMode ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+    applyTheme(theme);
   }
 
-  function setTheme(theme: 'light' | 'dark') {
+  function applyTheme(theme: 'light' | 'dark') {
     document.documentElement.classList.remove('light', 'dark');
     document.documentElement.classList.add(theme);
     document.documentElement.style.colorScheme = theme;
-    localStorage.theme = theme;
   }
 </script>
-
-<svelte:head>
-  <script>
-    if (localStorage.theme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.documentElement.style.colorScheme = 'dark';
-    }
-  </script>
-</svelte:head>
 
 <button
   type="button"
