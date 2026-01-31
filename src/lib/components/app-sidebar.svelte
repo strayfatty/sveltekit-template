@@ -9,7 +9,7 @@
 <Sidebar.Root>
   <Sidebar.Header>
     <a class="flex h-[36px] items-center gap-2 pl-2 font-bold text-zinc-900 dark:text-white" href="/">
-      <img class="h-6 w-6 self-center" src={favicon} alt="" />
+      <img class="h-6 w-6 self-center" src={favicon} alt="App icon" />
       <span>Home</span>
     </a>
   </Sidebar.Header>
