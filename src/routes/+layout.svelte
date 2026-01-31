@@ -5,7 +5,7 @@
   import AppSidebar from '$lib/components/app-sidebar.svelte';
   import Header from '$lib/components/header.svelte';
 
-	let { children } = $props();
+  let { children } = $props();
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>

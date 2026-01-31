@@ -10,7 +10,7 @@
 
     // Listen for system preference changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     function handleSystemThemeChange(e: MediaQueryListEvent) {
       // Only follow system changes if user hasn't set an explicit preference
       if (!localStorage.getItem('theme')) {
@@ -49,6 +49,7 @@
         document.documentElement.classList.add('dark');
         document.documentElement.style.colorScheme = 'dark';
       } else {
+        document.documentElement.classList.add('light');
         document.documentElement.style.colorScheme = 'light';
       }
     })();
@@ -57,6 +58,7 @@
 
 <button
   type="button"
+  aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
   class="relative inline-flex h-9 w-9 items-center justify-center rounded-md font-medium text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
   onclick={toggleTheme}
 >

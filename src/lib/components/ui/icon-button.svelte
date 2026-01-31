@@ -1,10 +1,13 @@
-<script lang="ts">
-  type Props = {
+<script lang="ts" module>
+  export type Props = {
     url: string;
     title: string;
     disabled?: boolean;
-    onclick: () => void;
+    onclick: (event: MouseEvent) => void;
   };
+</script>
+
+<script lang="ts">
   const { url, title, disabled, onclick }: Props = $props();
 </script>
 
