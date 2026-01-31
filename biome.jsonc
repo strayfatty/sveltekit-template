@@ -6,17 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": [
-      "**",
-      "!**/*.svelte",
-      "!src/lib/components/ui/button",
-      "!src/lib/components/ui/input",
-      "!src/lib/components/ui/separator",
-      "!src/lib/components/ui/sheet",
-      "!src/lib/components/ui/sidebar",
-      "!src/lib/components/ui/skeleton",
-      "!src/lib/components/ui/tooltip"
-    ]
+    "includes": ["**", "!**/*.svelte"]
   },
   "formatter": {
     "lineWidth": 100,
