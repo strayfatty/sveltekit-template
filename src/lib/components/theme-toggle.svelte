@@ -5,7 +5,7 @@
   let darkMode = $state(false);
 
   onMount(() => {
-    // Initialize based on current document state (set by blocking script in app.html)
+    // Initialize based on current document state
     darkMode = document.documentElement.classList.contains('dark');
 
     // Listen for system preference changes

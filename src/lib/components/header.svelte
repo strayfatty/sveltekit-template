@@ -11,6 +11,7 @@
       target="_blank"
       class="py-[6px] dark:fill-white"
       rel="noopener noreferrer"
+      aria-label="GitHub repository"
     >
       <svg class="size-[24px]">
         <title>GitHub</title>
